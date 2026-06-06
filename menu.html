@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Dashboard</title>
+<link rel="stylesheet" href="style1.css">
+
+
+<!-- Add jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="logo">Menu</div>
+  <button id="testBtn" data-page="testsettings" onclick="showPage('testsettings', this)">Test Settings</button>
+
+<button id="configBtn" data-page="config" onclick="showPage('config', this)">Configuration</button>
+
+<button id="liveBtn" data-page="live" onclick="showPage('live', this)">Endurance-Live Monitoring</button>
+
+<button id="paramBtn" data-page="paramsettings" onclick="showPage('paramsettings', this)">
+   Parameter Settings
+
+<button id="reportBtn"  data-page="report"  onclick="showPage('report', this)">
+    Report
+</button>
+
+<button id="linereg"  data-page="lineregulation"  onclick="showPage('lineregulation', this)">
+    Line Regulation
+</button>
+<button id="loadreg"  data-page="loadregulation"  onclick="showPage('loadregulation', this)">
+    Load Regulation
+</button>
+
+
+
+<button id="historicalBtn"  data-page="historical"  onclick="showPage('historical', this)">
+    Historical Trend
+</button>
+ 
+</div>
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+<!-- 🌟 Header -->
+<div class="header">
+ <div class="header-left">
+   👤 <span id="adminName">Not Logged In</span>
+</div>
+
+  <div class="header-center" id="connectionStatus">
+    STATUS
+  </div>
+
+  <div class="header-right">
+    <span id="clock"></span>
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- 🔹 Main Content -->
+  <div class="main-content">
+    <!------------Test  Settings--------------->
+ <div id="testsettings" class="page">
+
+  <h2 class="page-title">Test Settings</h2>
+
+  <div class="settings-card">
+
+        <!-- Channel 1 -->
+          <div class="channel-box">
+
+              <h3>Channel 1</h3>
+
+              <div class="dut-section">
+                  <label for="dutType">Type of DUT:</label>
+
+                  <select id="dutType" class="dropdown dutDropdown">
+                      <option value="">-- Select Supplier --</option>
+                      <option value="Supplier A">Supplier A</option>
+                      <option value="Supplier B">Supplier B</option>
+                      <option value="Supplier C">Supplier C</option>
+                  </select>
+              </div>
+
+                            <label>
+                  <input type="checkbox" class="dutCheck" value="DUT1">
+                  DUT1
+              </label>
+
+              <label>
+                  <input type="checkbox" class="dutCheck" value="DUT2">
+                  DUT2
+              </label>
+
+              <hr>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Endurance Test">
+                  Endurance Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Line Regulation Test">
+                  Line Regulation Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Load Regulation Test">
+                  Load Regulation Test
+              </label>
+
+              <hr>
+
+              <label>Number of Cycles</label>
+              <input type="text" class="cycles" placeholder="Enter value">
+
+
+              <label>Time Interval (sec)</label>          
+              <input type="text" class="time" placeholder="Enter value">
+                <button class="startBtn">Start</button>
+
+          </div>
+
+          <!-- Channel 2 -->
+          <div class="channel-box">
+
+              <h3>Channel 2</h3>
+
+              <div class="dut-section">
+                  <label for="dutType">Type of DUT:</label>
+
+                  <select id="dutType" class="dropdown dutDropdown">
+                      <option value="">-- Select Supplier --</option>
+                      <option value="Supplier A">Supplier A</option>
+                      <option value="Supplier B">Supplier B</option>
+                      <option value="Supplier C">Supplier C</option>
+                  </select>
+              </div>
+
+              <label>
+                  <input type="checkbox" class="dutCheck" value="DUT3">
+                  DUT3
+              </label>
+
+              <label>
+                  <input type="checkbox" class="dutCheck" value="DUT4">
+                  DUT4
+              </label>
+
+              <hr>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Endurance Test">
+                  Endurance Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Line Regulation Test">
+                  Line Regulation Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Load Regulation Test">
+                  Load Regulation Test
+              </label>
+
+              <hr>
+
+              <label>Number of Cycles</label>
+              <input type="text" class="cycles" placeholder="Enter value">
+
+              <label>Time Interval (sec)</label>          
+              <input type="text" class="time" placeholder="Enter value">
+                <button class="startBtn">Start</button>
+
+          </div>
+
+          <!-- Channel 3 -->
+          <div class="channel-box">
+
+              <h3>Channel 3</h3>
+
+              <div class="dut-section">
+                  <label for="dutType">Type of DUT:</label>
+
+                  <select id="dutType" class="dropdown dutDropdown">
+                      <option value="">-- Select Supplier --</option>
+                      <option value="Supplier A">Supplier A</option>
+                      <option value="Supplier B">Supplier B</option>
+                      <option value="Supplier C">Supplier C</option>
+                  </select>
+              </div>
+
+              <label>
+                  <input type="checkbox" class="dutCheck" value="DUT5">
+                  DUT5
+              </label>
+
+              <label>
+                  <input type="checkbox" class="dutCheck" value="DUT6">
+                  DUT6
+              </label>
+
+              <hr>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Endurance Test">
+                  Endurance Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Line Regulation Test">
+                  Line Regulation Test
+              </label>
+
+              <label>
+                  <input type="checkbox" class="testCheck" value="Load Regulation Test">
+                  Load Regulation Test
+              </label>
+
+              <hr>
+
+              <label>Number of Cycles</label>          
+              <input type="text" class="cycles" placeholder="Enter value">
+
+              <label>Time Interval (sec)</label>          
+              <input type="text" class="time" placeholder="Enter value">
+                <button class="startBtn">Start</button>
+
+          </div>
+
+      </div>
+</div>
+
+
+
+
+
+
+
+
+    <!-- ✅ Configuration Page -->
+    <div id="config" class="page">
+      <h2>Configuration</h2>
+
+      <div class="config-tabs">
+          <button class="tab-btn active" onclick="openConfigTab(event, 'Channel1Tab')">Channel 1 Instrument Config</button>
+                  <button class="tab-btn" onclick="openConfigTab(event, 'Channel2Tab')"> Channel 2 Instrument Config</button>
+
+
+        <button class="tab-btn" onclick="openConfigTab(event, 'userTab')">User Config</button>
+      </div>
+
+      <!-- Instrument Tab -->
+      <div id="Channel1Tab" class="config-tab active table-container">
+        <button class="crud-btn" onclick="openModal('addInstrumentModal')">➕ Add Instrument</button>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Instrument Name</th>
+              <th>Address</th>
+              <th>Serial Number</th>
+              <th>Calibration Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+<tbody id="instrumentTable1">
+           
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div id="Channel2Tab" class="config-tab active table-container" style="display:none;">
+        <button class="crud-btn" onclick="openModal('addInstrumentModal')">➕ Add Instrument</button>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Instrument Name</th>
+              <th>Address</th>
+              <th>Serial Number</th>
+              <th>Calibration Due Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="instrumentTable2">
+           
+          </tbody>
+        </table>
+      </div>
+
+
+        
+      <!-- User Tab -->
+      <div id="userTab" class="config-tab active table-container" style="display:none;">
+        <button class="crud-btn" onclick="openModal('addUserModal')">➕ Add User</button>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="userTable">
+            <tr>
+              <td>1</td>
+              <td>Admin</td>
+              <td>Administrator</td>
+              <td>Active</td>
+              <td>
+                <button class="crud-btn edit" onclick="openModal('editUserModal')">Edit</button>
+                <button class="crud-btn delete" onclick="openModal('deleteUserModal')">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+<!----------------------------->
+
+
+
+<!--------------------------------------->
+ <div id="live" class="page">
+
+    <h2 class="page-title">Endurance-Live Monitoring</h2>
+
+    <!-- Tabs -->
+    <div class="live-tabs">
+        <button class="live-tab-btn active"
+                onclick="openLiveTab(event,'liveTrend')">
+            Live Trend
+        </button>
+
+        <button class="live-tab-btn"
+                onclick="openLiveTab(event,'liveTable')">
+            Live Table
+        </button>
+
+        <button class="live-tab-btn"
+                onclick="openLiveTab(event,'liveTemperature')">
+            Live Temperature
+        </button>
+    </div>
+    <div class="live-content">
+
+    <!-- Live Trend -->
+    <div id="liveTrend" class="live-tab-content active">
+
+        <div class="dashboard">
+
+            <div class="channel-card" data-channel="Channel 1">
+                <h3>Channel 1</h3>
+                <div class="graph" data-dut="DUT1">
+                    <canvas id="dut1"></canvas>
+                </div>
+
+                <div class="graph" data-dut="DUT2">
+                    <canvas id="dut2"></canvas>
+                </div>
+            </div>
+
+            <div class="channel-card" data-channel="Channel 2">
+                <h3>Channel 2</h3>
+
+                <div class="graph" data-dut="DUT3">
+                    <canvas id="dut3"></canvas>
+                </div>
+
+                <div class="graph" data-dut="DUT4">
+                    <canvas id="dut4"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Live Table -->
+    <div id="liveTable" class="live-tab-content">
+
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Hardware Data</th>
+                        <th>DUT1 CAN Data</th>
+                        <th>DUT2 CAN Data</th>
+                    </tr>
+                </thead>
+
+                <tbody id="liveTableBody">
+                    <tr>
+                        <td>OBC Input Voltage</td>
+                        <td>229.65 V</td>
+                        <td>226.65 V</td>
+                        <td>-</td>
+                    </tr>
+                     <tr>
+                        <td>OBC Input Current</td>
+                        <td>10.00 A</td>
+                        <td>10.05 A</td>
+                        <td>-</td>
+                    </tr>
+                     <tr>
+                        <td>OBC Output Voltage</td>
+                        <td>103.36 V</td>
+                        <td>105.11 V</td>
+                        <td>-</td>
+                        </tr>
+                         <tr>
+                        <td>OBC Output Current</td>
+                        <td>19.98 A</td>
+                        <td>19.88 A</td>
+                        <td>-</td>
+                    </tr>
+                     <tr>
+                        <td>OBC Efficiency</td>
+                        <td>93.00 A</td>
+                        <td>91.65 A</td>
+                        <td>-</td>
+                    </tr>
+                      <tr>
+                        <td>DCBC Input Voltage</td>
+                        <td>103.36 V</td>
+                        <td>105.07 V</td>
+                        <td>102.99 V</td>
+                    </tr>
+                    <tr>
+                        <td>DCBC Input Current</td>
+                        <td>19.98 A</td>
+                        <td>0.00 A</td>
+                        <td>3.90 A</td>
+                    </tr>
+                    <tr>
+                        <td>DCBC Output Voltage</td>
+                        <td>13.69 V</td>
+                        <td>14.04 V</td>
+                        <td>13.97 V</td>
+                    </tr>
+                    <tr>
+                        <td>DCBC Output Current</td>
+                        <td>5.15 A</td>
+                        <td>5.11 A</td>
+                        <td>22.25 A</td>
+                    </tr>
+                     <tr>
+                        <td>Temp 1</td>
+                        <td>5.15 °C</td>
+                        <td>5.11 °C</td>
+                        <td>22.25 °C</td>
+                    </tr>
+                     <tr>
+                        <td>Temp 2</td>
+                        <td>5.15 °C</td>
+                        <td>5.11 °C</td>
+                        <td>22.25 °C</td>
+                    </tr>
+                     <tr>
+                        <td>Temp 3</td>
+                        <td>5.15 °C</td>
+                        <td>5.11 °C</td>
+                        <td>22.25 °C</td>
+                    </tr>
+                     <tr>
+                        <td>Temp 4</td>
+                        <td>5.15 °C</td>
+                        <td>5.11 °C</td>
+                        <td>22.25 °C</td>
+                    </tr>
+                     <tr>
+                        <td>Temp 5</td>
+                        <td>5.15 °C</td>
+                        <td>5.11 °C</td>
+                        <td>22.25 °C</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Live Temperature -->
+   <div id="liveTemperature" class="live-tab-content">
+
+    <div class="temp-dashboard">
+
+        <!-- DUT 1 -->
+        <div class="dut-temp-card">
+
+            <div class="top-sensors">
+                <span class="temp-value">T1: 66.8°C</span>
+                <span class="temp-value">T2: 75.4°C</span>
+                <span class="temp-value">T3: 60.9°C</span>
+            </div>
+
+            <div class="middle-section">
+
+                <div class="left-sensors">
+                    <span class="temp-value">T9: 47.2°C</span>
+                    <span class="temp-value">T10: 24.8°C</span>
+                </div>
+
+                <div class="dut-box">
+                    DUT1
+                </div>
+
+                <div class="right-sensors">
+                    <span class="temp-value">T4: 71.8°C</span>
+                    <span class="temp-value">T5: 29.6°C</span>
+                </div>
+
+            </div>
+
+            <div class="bottom-sensors">
+                <span class="temp-value">T6: 46.9°C</span>
+                <span class="temp-value">T7: 77.0°C</span>
+                <span class="temp-value">T8: 51.9°C</span>
+            </div>
+
+        </div>
+
+        <!-- DUT 2 -->
+        <div class="dut-temp-card">
+<div class="top-sensors">
+                <span class="temp-value">T1: 66.8°C</span>
+                <span class="temp-value">T2: 75.4°C</span>
+                <span class="temp-value">T3: 60.9°C</span>
+            </div>
+
+            <div class="middle-section">
+
+                <div class="left-sensors">
+                    <span class="temp-value">T9: 47.2°C</span>
+                    <span class="temp-value">T10: 24.8°C</span>
+                </div>            <div class="dut-box">DUT3</div>
+
+                 <div class="right-sensors">
+                    <span class="temp-value">T4: 71.8°C</span>
+                    <span class="temp-value">T5: 29.6°C</span>
+                </div>
+
+            </div>
+
+            <div class="bottom-sensors">
+                <span class="temp-value">T6: 46.9°C</span>
+                <span class="temp-value">T7: 77.0°C</span>
+                <span class="temp-value">T8: 51.9°C</span>
+            </div>
+
+        </div>
+
+        <!-- DUT 3 -->
+        <div class="dut-temp-card">
+          <div class="top-sensors">
+                <span class="temp-value">T1: 66.8°C</span>
+                <span class="temp-value">T2: 75.4°C</span>
+                <span class="temp-value">T3: 60.9°C</span>
+            </div>
+
+            <div class="middle-section">
+
+                <div class="left-sensors">
+                    <span class="temp-value">T9: 47.2°C</span>
+                    <span class="temp-value">T10: 24.8°C</span>
+                </div>   
+            <div class="dut-box">DUT2</div>
+
+             <div class="right-sensors">
+                    <span class="temp-value">T4: 71.8°C</span>
+                    <span class="temp-value">T5: 29.6°C</span>
+                </div>
+
+            </div>
+
+            <div class="bottom-sensors">
+                <span class="temp-value">T6: 46.9°C</span>
+                <span class="temp-value">T7: 77.0°C</span>
+                <span class="temp-value">T8: 51.9°C</span>
+            </div>
+        </div>
+
+        <!-- DUT 4 -->
+        <div class="dut-temp-card">
+          <div class="top-sensors">
+                <span class="temp-value">T1: 66.8°C</span>
+                <span class="temp-value">T2: 75.4°C</span>
+                <span class="temp-value">T3: 60.9°C</span>
+            </div>
+
+            <div class="middle-section">
+
+                <div class="left-sensors">
+                    <span class="temp-value">T9: 47.2°C</span>
+                    <span class="temp-value">T10: 24.8°C</span>
+                </div>   
+            <div class="dut-box">DUT4</div>
+             <div class="right-sensors">
+                    <span class="temp-value">T4: 71.8°C</span>
+                    <span class="temp-value">T5: 29.6°C</span>
+                </div>
+
+            </div>
+
+            <div class="bottom-sensors">
+                <span class="temp-value">T6: 46.9°C</span>
+                <span class="temp-value">T7: 77.0°C</span>
+                <span class="temp-value">T8: 51.9°C</span>
+            </div>
+        </div>
+
+    </div>
+
+      </div>
+   </div>
+
+      <div class="status-tabel-container">
+    <table class="status-table">
+        <thead>
+            <tr>
+                <th colspan="2">
+                    Channel 1
+                    <button class="stop-btn">Stop</button>
+                </th>
+                <th colspan="2">
+                    Channel 2
+                    <button class="stop-btn">Stop</button>
+                </th>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                    Cycles : 10/1200
+                    <span class="right-text">
+                        Time Remaining : 02:30:15
+                    </span>
+                </th>
+
+                <th colspan="2">
+                    Cycles : 12/1200
+                    <span class="right-text">
+                        Time Remaining : 01:45:20
+                    </span>
+                </th>
+            </tr>
+
+            <tr>
+                <th>DUT 1 : Charging</th>
+                <th>DUT 2 : Discharging</th>
+                <th>DUT 3 : Charging</th>
+                <th>DUT 4 : Discharging</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Temp 1: 125 °C</td>
+                <td>Temp 1: 0.645 °C</td>
+                <td>Temp 1: 121 °C</td>
+                <td>Temp 1: 230 °C</td>
+            </tr>
+              <tr>
+                <td>Temp 2: 112 °C</td>
+                <td>Temp 2: 320 °C</td>
+                <td>Temp 2: 23.0 °C</td>
+                <td>Temp 2: 110 °C</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</div>
+
+
+<!--------------------------------------------->
+   
+<!--------------------------------------->
+<div id="report" class="page">
+  <div class="report-header">
+    <h2>Reports</h2>
+  </div>
+
+  <div class="report-filters-card">
+    <h3>Filter Options</h3>
+
+    <div class="filters-grid">
+
+      <div class="form-group">
+        <label for="reportName">Report Name</label>
+        <input type="text" id="reportName" placeholder="Type report name">
+      </div>
+
+      <div class="form-group">
+        <label for="reportDate">Report Date</label>
+        <input type="date" id="reportDate">
+      </div>
+
+      <div class="form-group">
+        <label for="reportType">Report Type</label>
+        <select id="reportType" onchange="openFolder()">
+          <option value="">Select report type</option>
+          <option value="detailed">Detailed Production Report</option>
+          <option value="consolidated">Consolidated Report</option>
+        </select>
+      </div>
+
+      <!-- Hidden folder picker -->
+      <input type="file" id="folderPicker" webkitdirectory multiple style="display:none;">
+
+      <div class="form-group">
+        <button id="filterBtn" onclick="filterReports()">Filter</button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="report-content">
+    <div class="report-card">
+      <h3>Available Reports</h3>
+      <ul id="reportList" class="report-list">
+        <li>No reports found</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+   <!----------------------------------------------->
+<div id="lineregulation" class="page">
+     <h2 class="page-title">Line Regulation</h2>
+     <section class="regulation-section">
+      <h4 class="section-title">OBC Line Regulation</h4>
+     <div class="tables-wrapper">
+                    <!-- CAN Data Table -->
+
+  <div class="table-card">
+   <div class="card-header">
+    <div class="header-title">
+        OBC Line Regulation - CAN Data
+    </div>
+
+    <div class="header-subtitle">
+        Set HV Voltage: <strong>84 Vdc</strong> |
+        HV Current: <strong>25.6 A</strong>
+    </div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Set Input Voltage (V)</th>
+                    <th>Input AC voltage CAN (V)</th>
+                    <th>Input AC Current CAN (A)</th>
+                    <th>Output OBC Voltage CAN (V)</th>
+                    <th>Output OBC Current CAN (A)</th>
+                    <th>Line Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>230</td>
+                    <td></td>
+                    <td></td>
+                      <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                </tr>
+
+                <tr>
+                    <td>270</td>
+                    <td></td>
+                    <td></td>
+                      <td></td>
+                        <td></td>
+                        <td></td>
+                       
+                </tr>
+
+                
+            </tbody>
+        </table>
+    </div>
+
+     <!-- Power Analyser Table -->
+    <div class="table-card">
+
+        <div class="card-header">
+            <div class="header-title">
+                OBC Line Regulation - Power Analyser Data
+            </div>
+            <div class="header-subtitle">
+                Set HV voltage: 84Vdc; HV current : 25.6A
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Set Input Voltage (V)</th>
+                    <th>Input AC voltage Power Analyser (V)</th>
+                    <th>Input AC Current PowerAnalyser (A)</th>
+                    <th>OBC Output Voltage Power Analyser (V)</th>
+                    <th>OBC Output Current Power Analyser (A)</th>
+                    <th>Line Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                </tr>
+
+                <tr>
+                    <td>230</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+
+                <tr>
+                    <td>270</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
+                </tr>
+               
+
+              
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</section>
+        <section class="regulation-section">
+
+     <h4 class="section-title">HP DCDC Line Regulation</h4>
+
+     <div class="tables-wrapper">
+         <!-- CAN Data Table -->
+  <div class="table-card">
+   <div class="card-header">
+    <div class="header-title">
+       HP DCDC Line Regulation - CAN Data
+    </div>
+
+    <div class="header-subtitle">
+       HP DCDC set current : <strong>30 A</strong> 
+       
+    </div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Set HV Voltage</th>
+                    <th>Input HV voltage CAN (V)</th>
+                    <th>Input HV Current CAN (A)</th>
+                    <th>Output HP DCDC Voltage CAN (V)</th>
+                    <th>Output HP DCDC Current CAN (A)</th>
+                    <th>Line Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>80</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     <td></td>
+                </tr>
+
+                <tr>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                      <td></td>
+                        <td></td>
+                                              <td></td>
+
+                </tr>
+
+                <tr>
+                    <td>120</td>
+                    <td></td>
+                    <td></td>
+                      <td></td>
+                        <td></td>                        <td></td>
+
+                       
+                </tr>
+
+                
+            </tbody>
+        </table>
+    </div>
+
+  <!-- Power Analyser Table -->
+    <div class="table-card">
+
+        <div class="card-header">
+            <div class="header-title">
+            HP DCDC Line Regulation - Power Analyser Data
+            </div>
+            <div class="header-subtitle">
+                HP DCDC set current : 30A
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Set HV Voltage</th>
+                    <th>Input HV voltage Power Analyzer (V)</th>
+                    <th>Input HV Current Power Analyzer (A)</th>
+                    <th>Output HP DCDC Voltage Power Analyzer (V)</th>
+                    <th>Output HP DCDC Current Power Analyzer (A)</th>
+                    <th>Line Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>80</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
+                </tr>
+
+                <tr>
+                    <td>120</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+               
+
+              
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</section>
+<!------------------End Div------------------->
+</div>
+
+<!-------------------------------------->
+<div id="loadregulation" class="page">
+     <h2 class="page-title">Load Regulation</h2>
+     <section class="regulation-section">
+      <h4 class="section-title">OBC Load Regulation</h4>
+     <div class="tables-wrapper">
+                    <!-- CAN Data Table -->
+
+  <div class="table-card">
+   <div class="card-header">
+    <div class="header-title">
+        OBC Load Regulation - CAN Data
+    </div>
+
+    <div class="header-subtitle">
+       HV: <strong>84 Vdc</strong> 
+       
+    </div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>HV Load(%)</th>
+                    <th>Set HV Current(A)</th>
+                    <th>Input AC voltage CAN(V)</th>
+                    <th>Input AC Current CAN (A)</th>
+                    <th>Input Power CAN (W)</th>
+                    <th>Output OBC Voltage CAN(Output)</th>
+                     <th>Output OBC Current CAN(A)</th>
+                     <th>Output Power CAN (W)</th>
+                     <th>Load Regulation(%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>No Load</td>
+                    <td>0.00 </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     <td></td>
+                       <td></td>
+                    <td></td>
+                     <td></td>
+                </tr>
+
+                <tr>
+                    <td>230</td>
+                    <td>25</td>
+                    <td></td>
+                      <td></td>
+                        <td></td>
+                         <td></td>
+                           <td></td>
+                    <td></td>
+                     <td></td>
+                </tr>
+
+                
+
+                
+            </tbody>
+        </table>
+    </div>
+
+     <!-- Power Analyser Table -->
+    <div class="table-card">
+
+        <div class="card-header">
+            <div class="header-title">
+                OBC Load Regulation - Power Analyser Data
+            </div>
+            <div class="header-subtitle">
+                HV  : 84Vdc
+            </div>
+        </div>
+
+        <table>
+            <thead>
+             <tr>
+                    <th>HV Load(%)</th>
+                    <th>Set HV Current</th>
+                    <th>Input AC voltage Power Analyser (V)</th>
+                    <th>Input AC Current PowerAnalyser (A)</th>
+                    <th>Input Power Power Analyzer (W)</th>
+                    <th>OBC Output Voltage Power Analyser (V)</th>
+                     <th>OBC Output Current Power Analyser (A)</th>
+                     <th>OBC Output Power Analyser (W)</th>
+                     <th>Load Regulation(%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>100</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>230</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+               
+
+              
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</section>
+        <section class="regulation-section">
+
+     <h4 class="section-title">HP DCDC Load Regulation</h4>
+
+     <div class="tables-wrapper">
+         <!-- CAN Data Table -->
+  <div class="table-card">
+   <div class="card-header">
+    <div class="header-title">
+       HP DCDC Load Regulation - CAN Data
+    </div>
+
+    <div class="header-subtitle">
+     HV : <strong> 84Vdc</strong> 
+       
+    </div>
+</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>HV Load (%)</th>
+                    <th>Set HP DCDC Current (A)</th>
+                    <th>Input HV voltage CAN (V)</th>
+                    <th>Input HV Current CAN (A)</th>
+                    <th>Input Power CAN (W)</th>
+                    <th>Output HP DCDC Voltage CAN (V)</th>
+                    <th>Output HP DCDC Current CAN (A)</th>
+                    <th>Output Power CAN (W)</th>
+                    <th>Load Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>No Load</td>
+                    <td>0.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td ></td>
+                </tr>
+
+                <tr>
+                    <td>230</td>
+                    <td>30.00</td>
+                    <td></td>
+                      <td></td>
+                        <td></td>
+                         <td></td>
+                         <td></td>
+                     <td></td>
+                     <td ></td>
+                    
+                </tr>
+
+             
+                
+            </tbody>
+        </table>
+    </div>
+
+  <!-- Power Analyser Table -->
+    <div class="table-card">
+
+        <div class="card-header">
+            <div class="header-title">
+            HP DCDC Load Regulation - Power Analyser Data
+            </div>
+            <div class="header-subtitle">
+              HV : 84Vdc
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>HV Load (%)</th>
+                    <th>Set HP DCDC Current (A) </th>
+                    <th>Input HV voltage Power Analyzer (V)</th>
+                    <th>Input HV Current Power Analyzer (A)</th>
+                    <th>Input Power Power Analyzer (W)</th>
+                    <th>Output HP DCDC Voltage Power Analyzer (V)</th>
+                    <th>Output HP DCDC Current Power Analyzer (A)</th>
+                    <th>OBC Output Power Analyser (W)</th>
+                    <th>Load Regulation (%)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>No Load</td>
+                    <td>0.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>100</td>
+                    <td>30.00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                                        <td></td>
+
+                    
+                </tr>
+
+         
+               
+
+              
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</section>
+
+    <!--------##end div ##-------------->
+     </div>
+
+     <!----------------------------------->
+<div id="paramsettings" class="page">
+
+    <h2 class="page-title">Parameter Settings</h2>
+
+    <div class="settings-layout">
+
+        <!-- FORM CARD -->
+
+        <div class="settings-card">
+
+       <div class="form-group">
+    <label>Channel</label>
+
+    <select id="channel" onchange="updateDUT()">
+        <option value="">Select Channel</option>
+
+        <option value="ch1">Channel 1</option>
+
+        <option value="ch2">Channel 2</option>
+
+        <option value="ch3">Channel 3</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>DUT</label>
+
+    <select id="dut">
+        <option value="">Select DUT</option>
+    </select>
+</div>
+
+            <div class="form-group">
+                <label>AC Source Voltage</label>
+
+                <div class="input-with-unit">
+                    <input type="text" placeholder="Enter Voltage">
+                    <span class="unit">Vac</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Cooling Temperature</label>
+
+                <div class="input-with-unit">
+                    <input type="text" placeholder="Enter Temperature">
+                    <span class="unit">°C</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TABLE CARD -->
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th>DC Output</th>
+                        <th>HP DC-DC</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <span class="mode charging">
+                                Charging
+                            </span>
+                        </td>
+
+  <td>
+    <div class="table-input">
+
+        <div class="input-box">
+            <input type="text" placeholder="Voltage">
+            <span class="unit">Vdc</span>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Current">
+            <span class="unit">A</span>
+        </div>
+
+    </div>
+</td>
+                        <td>
+                            <div class="input-with-unit table-input">
+                                <input type="text" value="42">
+                                <span class="unit">A</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <span class="mode discharging">
+                                Discharging
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="input-with-unit table-input">
+                                <input type="text" placeholder="Voltage">
+                                <span class="unit">Vdc</span>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="input-with-unit table-input">
+                                <input type="text" placeholder="Current">
+                                <span class="unit">A</span>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="btn-area">
+                <button class="primary-btn">
+                    Save Settings
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+       
+    <!------------------------------------->
+
+
+ <div id="historical" class="page">
+
+    <h2 class="page-title">Historical Trend</h2>
+
+ <div class="upload-section">
+    <button class="btn-upload"
+        onclick="document.getElementById('csvFile').click()">
+        Select Folder
+    </button>
+
+    <input type="file"
+           id="csvFile"
+           accept=".csv"
+           hidden>
+
+    <span id="fileInfo">No file selected</span>
+</div>
+
+<div class="filter-container">
+
+    <div class="cycle-frame">
+        <label>Cycle Number</label>
+        <div class="cycle-inputs">
+            <input type="text" placeholder="From">
+            <input type="text" placeholder="To">
+        </div>
+    </div>
+
+    <div class="parameter-frame">
+        <label>Y-Axis Parameter</label>
+        <select>
+            <option>Efficiency</option>
+            <option>Temperature</option>
+
+
+        </select>
+    </div>
+
+    <button class="btn-plot">Plot Graph</button>
+
+</div>
+
+<div class="graph-container">
+    <div id="graph-area">Graph Preview</div>
+</div>
+
+</div>
+
+
+<!------------------------------------------>
+  <!------------------>
+  </div>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <button  id="homeBtn"class="home-btn">Home</button>
+       
+  </div>
+</div>
+
+
+<!-- Modal Templates -->
+<div id="addInstrumentModal" class="modal">
+  <div class="modal-content">
+    <span class="close-icon" onclick="closeModal('addInstrumentModal')">&times;</span>
+    <h3>Add Instrument</h3>
+    <label>Instrument Name</label><input type="text">
+    <label>Address</label><input type="text">
+    <label>Serial Number</label><input type="text">
+    <label>Calibration Due Date</label><input type="date">
+    <label>Status</label><select><option>Active</option><option>Inactive</option></select>
+    <!-- <button onclick="closeModal('addInstrumentModal')">Save</button> -->
+      <button onclick="saveInstrument()">Save</button>
+
+  </div>
+</div>
+
+<div id="editInstrumentModal" class="modal">
+  <div class="modal-content">
+    <span class="close-icon" onclick="closeModal('editInstrumentModal')">&times;</span>
+    <h3>Edit Instrument</h3>
+    <label>Instrument Name</label><input type="text" value="Multimeter">
+    <label>Address</label><input type="text" value="192.168.1.10">
+    <label>Serial Number</label><input type="text" value="SN12345">
+    <label>Calibration Due Date</label><input type="date" value="2025-12-31">
+    <label>Status</label><select><option>Active</option><option>Inactive</option></select>
+    <!-- <button onclick="closeModal('editInstrumentModal')">Update</button> -->
+      <button onclick="updateInstrument()">Update</button>
+
+  </div>
+</div>
+
+
+
+<div id="deleteInstrumentModal" class="modal">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete this instrument?</h3>
+
+    <button class="crud-btn delete" onclick="confirmDeleteInstrument()">
+      Yes, Delete
+    </button>
+
+    <button class="crud-btn" onclick="closeModal('deleteInstrumentModal')">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<div id="addUserModal" class="modal">
+  <div class="modal-content">
+    <span class="close-icon" onclick="closeModal('addUserModal')">&times;</span>
+    <h3>Add User</h3>
+    <label>Username</label><input type="text">
+    <label>Role</label><select><option>Administrator</option><option>Operator</option></select>
+    <label>Status</label><select><option>Active</option><option>Inactive</option></select>
+    <!-- <button onclick="closeModal('addUserModal')">Save</button> -->
+   <button onclick="saveUser()">Save</button>
+  </div>
+</div>
+
+<div id="editUserModal" class="modal">
+  <div class="modal-content">
+    <span class="close-icon" onclick="closeModal('editUserModal')">&times;</span>
+    <h3>Edit User</h3>
+    <label>Username</label><input type="text" value="Admin">
+    <label>Role</label><select><option>Administrator</option><option>Operator</option></select>
+    <label>Status</label><select><option>Active</option><option>Inactive</option></select>
+    <!-- <button onclick="closeModal('editUserModal')">Update</button> -->
+  <button onclick="updateUser()">Update</button>
+  </div>
+</div>
+
+<div id="deleteUserModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete this user?</h3>
+
+    <button type="button"
+            class="crud-btn delete"
+            onclick="confirmDeleteUser()">
+      Yes, Delete
+    </button>
+
+    <button type="button"
+            class="crud-btn"
+            onclick="closeModal('deleteUserModal')">
+      Cancel
+    </button>
+  </div>
+</div>
+<script src="menu.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

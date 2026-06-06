@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dashboard</title>
+
+<!-- Libraries -->
+<link rel="stylesheet" href="stylesheet.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.25/dist/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body>
+
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar sidebarshow" id="sidebar">
+         <div class="logo-box" style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"></div>
+<button class="menu-btn" id="menuBtn">MENU</button>
+
+
+        <button class="full-btn btn-login" id="loginBtnHome">Login</button>
+                <!-- <button class="full-btn btn-login" onclick="logout()">logout</button> -->
+
+
+      </aside>
+
+      <!-- Main Section -->
+      <div class="main" id="main">
+        <!-- Container for loaded page -->
+        <div id="pageContainer"></div>
+
+        <!-- Default Dashboard -->
+        <div id="dashboardContent">
+          <div class="header">
+            <div class="header-left">
+              <div class="logo-box">
+                <img src="elmack.png" alt="Elmack Logo">
+              </div>
+            </div>
+
+            <div class="header-center">
+              <div class="app-title">APPLICATION DASHBOARD</div>
+              <div class="app-subtitle">Powered by Elmack Engineering</div>
+            </div>
+ 
+            <div class="header-right">
+              <div class="customer-logo">CUSTOMER LOGO</div>
+            </div>
+          </div>
+
+          <div class="thin-line"></div>
+
+          <div class="status-row">
+            <div class="status-box">
+   👤 <span id="adminName">Not Logged In</span>
+</div>
+            <div class="status-box" id =>STATUS</div>
+            <div class="datetime-box" id="dtbox">
+               <span id="clock"></span>
+            </div>
+          </div>
+
+       <div class="data-grid">
+
+  <div class="data-card" id="voltageCard">
+    <div class="label">Power</div>
+    <div class="value">--</div>
+  </div>
+
+  <div class="data-card" id="currentCard">
+    <div class="label">Instrument</div>
+    <div class="value">Connected</div>
+  </div>
+
+  <div class="data-card" id="resistanceCard">
+    <div class="label">Test Status</div>
+    <div class="value">Stop</div>
+  </div>
+
+
+</div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Button -->
+
+<div class="popup" id="loginPopup">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Sign In</h2>
+      <span id="closeBtn">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <label>Username</label>
+      <input type="text" id="username" placeholder="Enter username">
+
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+
+      <p id="errorMsg"></p>
+
+      <button id="loginBtn">Login</button>
+      
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+
+
+
+
+<script src="home.js"></script>
+
+</body>
+</html>

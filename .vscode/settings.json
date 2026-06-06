@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "c:\\Users\\Vidhya\\.vscode\\extensions\\keysight.opentap-python-0.1.0\\out\\pythonStubs",
+        "c:\\Users\\Zahran\\.vscode\\extensions\\keysight.opentap-python-0.1.0\\out\\pythonStubs"
+    ],
+    "liveServer.settings.port": 5502
+}

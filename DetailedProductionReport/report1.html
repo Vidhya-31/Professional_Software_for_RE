@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Report-1</title>
+
+<style>
+    /* ------------ GLOBAL ------------ */
+    body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #eef1f5;
+        color: #222;
+    }
+
+    /* ------------ HEADER ------------ */
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background: #ffffff;
+        border-bottom: 3px solid #0077b6;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header img {
+        height: 70px;
+    }
+
+    .header-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        flex: 1;
+        color: #003566;
+        letter-spacing: 0.5px;
+    }
+
+.header img {
+    width: 300px;
+    height: 50px;
+}
+
+    .date-time {
+        font-size: 15px;
+        text-align: right;
+        min-width: 160px;
+    }
+
+    /* ------------ CONTENT AREA ------------ */
+    .content {
+        margin: 30px auto;
+        padding: 20px;
+        width: 94%;
+    }
+
+    /* ------------ TABLE DESIGN ------------ */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+    }
+th,td{
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+
+}
+    thead th {
+        background: #0077b6;
+        color: white;
+ padding: 12px 10px;
+         font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        position: relative;
+    text-align: center; 
+    }
+
+    tbody td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f8fbff;
+    }
+
+    /* ------------ SECTION TITLE ------------ */
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #003566;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* ------------ REFERENCE TABLES ROW ------------ */
+    .reference-container {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .reference-box {
+        flex: 1;
+        min-width: 280px;   /* good for small screens */
+    }
+
+     @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    @media print {
+
+        body {
+            background: white !important;
+            margin: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .header {
+            page-break-after: avoid;
+            border-bottom: 2px solid #0077b6 !important;
+        }
+
+        .content {
+            margin: 0;
+            box-shadow: none !important;
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        thead {
+            display: table-header-group; /* Repeat table header on each page */
+        }
+
+        .reference-container {
+            page-break-inside: avoid;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+    <img src="logo.png" alt="Customer Logo">
+    <div class="header-title">DETAILED PRODUCTION REPORT</div>
+    <div class="date-time" id="datetime">14/11/2025</div>
+</div>
+
+<!-- ==================== CONTENT AREA ==================== -->
+<div class="content">
+
+    <!-- MAIN TEST TABLE (unchanged) -->
+    <table>
+        <thead>
+            <tr>
+                <th>SI No</th>
+                <th>Part No</th>
+                <th>Part S/N</th>
+                <th>Test Start Time</th>
+                <th>Test End Time</th>
+                <th>Test Performed By</th>
+                <th>Measured Voltage (V)</th>
+                <th>Measured Current (A)</th>
+                <th>Measured Resistance (Ω)</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+   <tbody>
+
+<!-- ========== PN003 ========== -->
+<tr><td>1</td><td>PN003</td><td>PN003_03</td><td>12:00 AM</td><td>1:00 AM</td><td>Operator C</td><td>7</td><td>0.3</td><td>15</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>2</td><td>PN003</td><td>PN003_04</td><td>1:00 AM</td><td>2:00 AM</td><td>Operator C</td><td>9</td><td>0.5</td><td>20</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<!-- FAIL: PN002 incorrect values earlier -->
+<tr><td>3</td><td>PN002</td><td>PN002_04</td><td>2:30 AM</td><td>3:30 AM</td><td>Operator C</td><td>100</td><td>0.05</td><td>3</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>4</td><td>PN002</td><td>PN002_05</td><td>3:30 AM</td><td>4:30 AM</td><td>Operator C</td><td>105</td><td>0.02</td><td>10</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>5</td><td>PN003</td><td>PN003_02</td><td>5:00 AM</td><td>6:00 AM</td><td>Operator C</td><td>10</td><td>0.9</td><td>40</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+<!-- ========== PN001 / PN002 / PN003 MIX ========== -->
+
+<tr><td>6</td><td>PN001</td><td>PN001_01</td><td>6:00 AM</td><td>7:00 AM</td><td>Operator A</td><td>222</td><td>5</td><td>120</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>7</td><td>PN002</td><td>PN002_01</td><td>7:00 AM</td><td>8:00 AM</td><td>Operator A</td><td>125</td><td>4.2</td><td>90</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>8</td><td>PN001</td><td>PN001_03</td><td>8:30 AM</td><td>9:30 AM</td><td>Operator A</td><td>230</td><td>2.5</td><td>150</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>9</td><td>PN001</td><td>PN001_02</td><td>9:30 AM</td><td>10:30 AM</td><td>Operator A</td><td>200</td><td>8.1</td><td>90</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>10</td><td>PN003</td><td>PN003_05</td><td>10:30 AM</td><td>11:30 AM</td><td>Operator A</td><td>9</td><td>0.6</td><td>22</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+<tr><td>11</td><td>PN003</td><td>PN003_04</td><td>11:30 AM</td><td>12:30 PM</td><td>Operator A</td><td>7</td><td>0.5</td><td>24</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>12</td><td>PN001</td><td>PN001_04</td><td>1:00 PM</td><td>2:00 PM</td><td>Operator A</td><td>218</td><td>3.4</td><td>160</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+<!-- ========== PN002 ========== -->
+
+<tr><td>13</td><td>PN002</td><td>PN002_03</td><td>2:00 PM</td><td>3:00 PM</td><td>Operator B</td><td>120</td><td>2.1</td><td>50</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>14</td><td>PN002</td><td>PN002_04</td><td>3:00 PM</td><td>4:00 PM</td><td>Operator B</td><td>125</td><td>2.2</td><td>60</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+<!-- FAIL PN003 (voltage too high) -->
+<tr><td>15</td><td>PN003</td><td>PN003_03</td><td>4:00 PM</td><td>5:00 PM</td><td>Operator B</td><td>135</td><td>6</td><td>140</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>16</td><td>PN003</td><td>PN003_04</td><td>5:30 PM</td><td>6:30 PM</td><td>Operator B</td><td>125</td><td>4</td><td>120</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+
+<tr><td>17</td><td>PN001</td><td>PN001_03</td><td>6:30 PM</td><td>7:30 PM</td><td>Operator B</td><td>212</td><td>1.5</td><td>80</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+<tr><td>18</td><td>PN002</td><td>PN002_05</td><td>7:30 PM</td><td>8:30 PM</td><td>Operator B</td><td>105</td><td>2.5</td><td>30</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>19</td><td>PN002</td><td>PN002_02</td><td>9:00 PM</td><td>10:00 PM</td><td>Operator B</td><td>108</td><td>4.5</td><td>30</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+
+<!-- ========== PN003 ========== -->
+
+<tr><td>20</td><td>PN003</td><td>PN003_01</td><td>10:00 PM</td><td>11:00 PM</td><td>Operator C</td><td>8</td><td>0.8</td><td>24</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>21</td><td>PN001</td><td>PN001_01</td><td>11:00 PM</td><td>12:00 AM</td><td>Operator C</td><td>215</td><td>0.6</td><td>110</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+
+
+</tbody>
+
+    </table>
+
+    <!-- ==================== THREE REFERENCE TABLES IN SAME ROW ==================== -->
+
+    <div class="reference-container">
+
+    <!-- Reference 1 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN001</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+            <tbody>
+                <tr><td>Voltage (V)</td><td>210 V</td><td>240 V</td></tr>
+                <tr><td>Current (C)</td><td>1 A</td><td>10 A</td></tr>
+                <tr><td>Resistance (Ω)</td><td>50 Ω</td><td>200 Ω</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Reference 2 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN002</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+            <tbody>
+                <tr><td>Voltage (V)</td><td>110 V</td><td>130 V</td></tr>
+                <tr><td>Current (C)</td><td>0.5 A</td><td>5 A</td></tr>
+                <tr><td>Resistance (Ω)</td><td>20 Ω</td><td>120 Ω</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Reference 3 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN003</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+            <tbody>
+                <tr><td>Voltage (V)</td><td>5 V</td><td>12 V</td></tr>
+                <tr><td>Current (C)</td><td>0.1 A</td><td>1 A</td></tr>
+                <tr><td>Resistance (Ω)</td><td>5 Ω</td><td>50 Ω</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

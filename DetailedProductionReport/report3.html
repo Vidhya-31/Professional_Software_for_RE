@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Report-3</title>
+
+<style>
+   body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f5f9;
+    color: #222;
+}
+
+/* ------------ HEADER ------------ */
+.header {
+    display: flex;
+    align-items: center;      /* vertically center */
+    justify-content: space-between; /* left - center - right */
+    padding: 10px 20px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;                 /* allow center title to stay centered */
+}
+
+.header img {
+    width: 300px;
+    height: 50px;
+}
+
+
+.date-time {
+    font-size: 15px;
+    min-width: 160px;
+    text-align: right;
+}
+
+/* ------------ CONTENT AREA ------------ */
+.content {
+    margin: 30px auto;
+    padding: 20px;
+    width: 94%;
+}
+
+/* ------------ TABLE DESIGN ------------ */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+}
+
+th,td{
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+
+}
+
+/* HEADER CELLS */
+thead th {
+    background: #0077b6;
+    color: white;
+    padding: 12px 10px;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;       
+}
+
+/* DROPDOWN INSIDE HEADER */
+thead th select {
+    margin-top: 6px;
+    width: 95px;
+    padding: 4px 5px;
+    border-radius: 6px;
+    font-size: 12px;
+    border: none;
+    background: #ffffff;
+    color: #003566;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+thead th select:hover {
+    background: #e7f6ff;
+}
+
+/* BODY CELLS */
+tbody td {
+    padding: 11px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* EVEN ROWS */
+tbody tr:nth-child(even) {
+    background: #f9fcff;
+}
+
+/* HOVER EFFECT */
+tbody tr:hover {
+    background: #eaf4ff;
+    transition: 0.2s ease-in-out;
+}
+
+/* ------------ REFERENCE TABLE SECTION ------------ */
+.reference-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    justify-items: center;
+}
+
+
+.reference-box {
+    background: white;
+    padding: 16px;
+     width: 100%;     /* auto-fit in grid */
+    max-width: 380px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+    transition: 0.25s ease;
+}
+
+.reference-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 22px rgba(0,0,0,0.15);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #003566;
+    text-align: center;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #0077b6;
+}
+
+/* REFERENCE TABLE STYLE */
+.reference-box table {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.reference-box td, .reference-box th {
+    padding: 10px;
+    text-align: center;
+}
+
+.reference-box thead th {
+    background: #0077b6;
+    color: white;
+    font-size: 13px;
+}
+
+/* ------------ PRINT STYLE ------------ */
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+@media print {
+    body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .header {
+        border-bottom: 2px solid #0077b6 !important;
+        box-shadow: none !important;
+    }
+
+    .content {
+        box-shadow: none !important;
+        margin: 0;
+    }
+
+    table {
+        page-break-inside: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    .reference-container {
+        page-break-inside: avoid;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<div class="header">
+    <img src="logo.png" alt="Customer Logo">
+    <div class="header-title">DETAILED PRODUCTION REPORT</div>
+    <div class="date-time" id="datetime">17/11/2025</div>
+</div>
+
+<!-- ==================== CONTENT AREA ==================== -->
+<div class="content">
+
+    <!-- MAIN TEST TABLE (unchanged) -->
+<table id="productionTable">
+        <thead>
+            <tr>
+                <th>SI No</th>
+                <th>Part No</th>
+                <th>Part S/N</th>
+                <th>Test Start Time</th>
+                <th>Test End Time</th>
+                <th>Test Performed By</th>
+                <th>Measured Voltage (V)</th>
+                <th>Measured Current (A)</th>
+                <th>Measured Resistance (Ω)</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+   <tbody>
+
+<tr><td>1</td><td>PN002</td><td>PN002_13</td><td>12:00 AM</td><td>1:00 AM</td><td>Operator C</td>
+<td>205</td><td>1.8</td><td>40</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>2</td><td>PN003</td><td>PN003_13</td><td>1:00 AM</td><td>2:00 AM</td><td>Operator C</td>
+<td>220</td><td>2.1</td><td>35</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>3</td><td>PN001</td><td>PN001_13</td><td>2:30 AM</td><td>3:30 AM</td><td>Operator C</td>
+<td>238</td><td>3.2</td><td>25</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>4</td><td>PN002</td><td>PN002_14</td><td>3:30 AM</td><td>4:30 AM</td><td>Operator C</td>
+<td>210</td><td>1.5</td><td>55</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>5</td><td>PN003</td><td>PN003_14</td><td>5:00 AM</td><td>6:00 AM</td><td>Operator C</td>
+<td>225</td><td>2.9</td><td>48</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>6</td><td>PN001</td><td>PN001_14</td><td>6:00 AM</td><td>7:00 AM</td><td>Operator A</td>
+<td>245</td><td>3.8</td><td>32</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>7</td><td>PN002</td><td>PN002_15</td><td>7:00 AM</td><td>8:00 AM</td><td>Operator A</td>
+<td>217</td><td>3.0</td><td>75</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>8</td><td>PN003</td><td>PN003_15</td><td>8:30 AM</td><td>9:30 AM</td><td>Operator A</td>
+<td>240</td><td>3.8</td><td>70</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>9</td><td>PN001</td><td>PN001_15</td><td>9:30 AM</td><td>10:30 AM</td><td>Operator A</td>
+<td>228</td><td>2.4</td><td>30</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>10</td><td>PN002</td><td>PN002_16</td><td>10:30 AM</td><td>11:30 AM</td><td>Operator A</td>
+<td>208</td><td>1.6</td><td>60</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>11</td><td>PN003</td><td>PN003_16</td><td>11:30 AM</td><td>12:30 PM</td><td>Operator A</td>
+<td>215</td><td>1.4</td><td>40</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>12</td><td>PN002</td><td>PN002_16</td><td>1:00 PM</td><td>2:00 PM</td><td>Operator A</td>
+<td>200</td><td>2.2</td><td>65</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>13</td><td>PN003</td><td>PN003_17</td><td>2:00 PM</td><td>3:00 PM</td><td>Operator B</td>
+<td>238</td><td>3.6</td><td>68</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>14</td><td>PN001</td><td>PN001_17</td><td>3:00 PM</td><td>4:00 PM</td><td>Operator B</td>
+<td>260</td><td>4.8</td><td>50</td><td style="color:red;font-weight:700;">FAIL</td></tr>
+
+<tr><td>15</td><td>PN002</td><td>PN002_17</td><td>4:00 PM</td><td>5:00 PM</td><td>Operator B</td>
+<td>210</td><td>1.9</td><td>45</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>16</td><td>PN003</td><td>PN003_18</td><td>5:30 PM</td><td>6:30 PM</td><td>Operator B</td>
+<td>225</td><td>1.2</td><td>30</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>17</td><td>PN001</td><td>PN001_18</td><td>6:30 PM</td><td>7:30 PM</td><td>Operator B</td>
+<td>240</td><td>3.5</td><td>22</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>18</td><td>PN002</td><td>PN002_18</td><td>7:30 PM</td><td>8:30 PM</td><td>Operator B</td>
+<td>205</td><td>1.7</td><td>35</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>19</td><td>PN003</td><td>PN003_19</td><td>9:00 PM</td><td>10:00 PM</td><td>Operator B</td>
+<td>215</td><td>0.9</td><td>28</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>20</td><td>PN001</td><td>PN001_19</td><td>10:00 PM</td><td>11:00 PM</td><td>Operator C</td>
+<td>235</td><td>2.6</td><td>34</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+<tr><td>21</td><td>PN002</td><td>PN002_19</td><td>11:00 PM</td><td>12:00 AM</td><td>Operator C</td>
+<td>212</td><td>2.0</td><td>52</td><td style="color:green;font-weight:700;">PASS</td></tr>
+
+</tbody>
+
+    </table>
+
+    <!-- ==================== THREE REFERENCE TABLES IN SAME ROW ==================== -->
+
+   <div class="reference-container">
+
+    <!-- Reference 1 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN001</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+            <tbody>
+    <tr><td>Voltage (V)</td><td>220</td><td>250</td></tr>
+    <tr><td>Current (A)</td><td>0.8</td><td>4.2</td></tr>
+    <tr><td>Resistance (Ω)</td><td>12</td><td>42</td></tr>
+</tbody>
+
+        </table>
+    </div>
+
+    <!-- Reference 2 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN002</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+            <tbody>
+    <tr><td>Voltage (V)</td><td>195</td><td>215</td></tr>
+    <tr><td>Current (A)</td><td>0.6</td><td>2.8</td></tr>
+    <tr><td>Resistance (Ω)</td><td>25</td><td>70</td></tr>
+</tbody>
+
+        </table>
+    </div>
+
+    <!-- Reference 3 -->
+    <div class="reference-box">
+        <div class="section-title">Reference for PN003</div>
+        <table>
+            <thead><tr><th>Parameter</th><th>Min</th><th>Max</th></tr></thead>
+           <tbody>
+    <tr><td>Voltage (V)</td><td>205</td><td>235</td></tr>
+    <tr><td>Current (A)</td><td>0.4</td><td>3.5</td></tr>
+    <tr><td>Resistance (Ω)</td><td>18</td><td>65</td></tr>
+</tbody>
+
+        </table>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
