@@ -356,16 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderUsers();
 });
-// ---------- Config Tabs ----------
-// function openConfigTab(event, tabId) {
-//   // Hide all tabs
-//   document.querySelectorAll(".config-tab").forEach(tab => tab.style.display = "none");
-//   document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
 
-//   // Show active tab
-//   document.getElementById(tabId).style.display = "block";
-//   event.currentTarget.classList.add("active");
-// }
 
 // Update status dynamically
 function setConnectionStatus(isConnected) {
@@ -398,23 +389,7 @@ setInterval(updateClock, 1000);
 updateClock();
 
 
-// Example status call:
-// setConnectionStatus(false); // default disconnected
-// setConnectionStatus(true); // call this when connected
 
-//---------------------------------//
-function toggleBypass(type) {
-  const status = document.getElementById(type + "Status");
-  const toggle = document.getElementById(type + "Toggle");
-
-  if (toggle.checked) {
-    status.innerText = "Enabled";
-    status.style.color = "green";
-  } else {
-    status.innerText = "Disabled";
-    status.style.color = "red";
-  }
-}
 ////////////////////////////////////////////////////////////////
 let allReports = [];
 
@@ -694,39 +669,6 @@ createChart("dut4", "DUT 4", "discharging");
 
 
 
-// function updateDUT() {
-//     const channel = document.getElementById("channel").value;
-//     const dutSelect = document.getElementById("dut");
-
-//     dutSelect.innerHTML = '<option value="">-- Select DUT --</option>';
-
-//     const dutData = {
-//     ch1: ["Supplier A", "Supplier B", "Supplier C"],
-//     ch2: ["Supplier A", "Supplier B", "Supplier C"],
-//     ch3: ["Supplier A", "Supplier B", "Supplier C"]
-//   };
-// console.log(dutData)
-//     if (channel && dutData[channel]) {
-//         dutData[channel].forEach(dut => {
-//             const option = document.createElement("option");
-//             option.value = dut;
-//             option.text = dut;
-//             dutSelect.appendChild(option);
-//         });
-//     }
-// }
-
-// function showSelection() {
-//     const channel = document.getElementById("channel").value;
-//     const dut = document.getElementById("dut").value;
-//     const result = document.getElementById("result");
-
-//     if (!channel || !dut) {
-//         result.innerHTML = "Please select Channel and DUT!";
-//     } else {
-//         result.innerHTML = `Selected: ${channel.toUpperCase()} - ${dut}`;
-//     }
-// }
 
 
 
