@@ -694,39 +694,39 @@ createChart("dut4", "DUT 4", "discharging");
 
 
 
-function updateDUT() {
-    const channel = document.getElementById("channel").value;
-    const dutSelect = document.getElementById("dut");
+// function updateDUT() {
+//     const channel = document.getElementById("channel").value;
+//     const dutSelect = document.getElementById("dut");
 
-    dutSelect.innerHTML = '<option value="">-- Select DUT --</option>';
+//     dutSelect.innerHTML = '<option value="">-- Select DUT --</option>';
 
-    const dutData = {
-    ch1: ["Supplier A", "Supplier B", "Supplier C"],
-    ch2: ["Supplier A", "Supplier B", "Supplier C"],
-    ch3: ["Supplier A", "Supplier B", "Supplier C"]
-  };
-console.log(dutData)
-    if (channel && dutData[channel]) {
-        dutData[channel].forEach(dut => {
-            const option = document.createElement("option");
-            option.value = dut;
-            option.text = dut;
-            dutSelect.appendChild(option);
-        });
-    }
-}
+//     const dutData = {
+//     ch1: ["Supplier A", "Supplier B", "Supplier C"],
+//     ch2: ["Supplier A", "Supplier B", "Supplier C"],
+//     ch3: ["Supplier A", "Supplier B", "Supplier C"]
+//   };
+// console.log(dutData)
+//     if (channel && dutData[channel]) {
+//         dutData[channel].forEach(dut => {
+//             const option = document.createElement("option");
+//             option.value = dut;
+//             option.text = dut;
+//             dutSelect.appendChild(option);
+//         });
+//     }
+// }
 
-function showSelection() {
-    const channel = document.getElementById("channel").value;
-    const dut = document.getElementById("dut").value;
-    const result = document.getElementById("result");
+// function showSelection() {
+//     const channel = document.getElementById("channel").value;
+//     const dut = document.getElementById("dut").value;
+//     const result = document.getElementById("result");
 
-    if (!channel || !dut) {
-        result.innerHTML = "Please select Channel and DUT!";
-    } else {
-        result.innerHTML = `Selected: ${channel.toUpperCase()} - ${dut}`;
-    }
-}
+//     if (!channel || !dut) {
+//         result.innerHTML = "Please select Channel and DUT!";
+//     } else {
+//         result.innerHTML = `Selected: ${channel.toUpperCase()} - ${dut}`;
+//     }
+// }
 
 
 
@@ -743,6 +743,7 @@ if (role === "operator") {
 
     document.getElementById("configBtn").style.display = "none";
     document.getElementById("paramBtn").style.display = "none";
+     document.getElementById("alarmbtn").style.display = "none";
 }
 
 
@@ -996,3 +997,495 @@ document.getElementById("csvFile").addEventListener("change", function (e) {
 
     reader.readAsText(file);
 });
+
+
+//====================PARAMETER PAGE===========================================
+
+//================= FOR FILE UPLOAD =================
+
+document.getElementById("dbcFile").addEventListener("change", function () {
+
+    if (this.files.length > 0) {
+        document.getElementById("dbcFileName").value = this.files[0].name;
+    }
+
+});
+
+function removeFile() {
+
+    document.getElementById("dbcFile").value = "";
+    document.getElementById("dbcFileName").value = "";
+
+}
+
+
+/* =========================
+  FOR PARAMETER PAGE  CHANNEL ADD,DELETE,EDIT
+========================= */
+
+
+let modalMode = "";
+let dutMode = "";
+
+/* ======================================
+   Opens the modal for adding a new channel
+======================================== */
+function openAddModal() {
+
+    modalMode = "add";
+
+    document.getElementById("modalTitle").innerText = "Add Channel";
+
+    document.getElementById("channelInput").value = "";
+    document.getElementById("channelInput").style.display = "block";
+
+    document.getElementById("deleteText").style.display = "none";
+
+    document.getElementById("channelModal").style.display = "flex";
+}
+
+/* ===============================================
+   Opens the modal for editing the selected channel
+=================================================== */
+function openEditModal() {
+
+    let dropdown = document.getElementById("channel_name");
+
+    if (!dropdown || dropdown.selectedIndex === 0) {
+        alert("Please select a channel");
+        return;
+    }
+
+    modalMode = "edit";
+
+    document.getElementById("modalTitle").innerText = "Edit Channel";
+
+    document.getElementById("channelInput").value =
+        dropdown.options[dropdown.selectedIndex].text;
+
+    document.getElementById("channelInput").style.display = "block";
+    document.getElementById("deleteText").style.display = "none";
+
+    document.getElementById("channelModal").style.display = "flex";
+}
+
+/* ===============================================
+   Opens the modal for deleting the selected channel
+================================================== */
+function openDeleteModal() {
+
+    let dropdown = document.getElementById("channel_name");
+
+    if (!dropdown || dropdown.selectedIndex === 0) {
+        alert("Please select a channel");
+        return;
+    }
+
+    modalMode = "delete";
+
+    document.getElementById("modalTitle").innerText = "Delete Channel";
+
+    document.getElementById("channelInput").style.display = "none";
+    document.getElementById("deleteText").style.display = "block"; //Just show a text, div, paragraph
+
+    document.getElementById("channelModal").style.display = "flex"; //Need centering, row/column layout, spacing between children
+}
+
+/* =========================
+   Closes the modal
+========================= */
+function closeModal(id = "channelModal") {
+    document.getElementById(id).style.display = "none";
+}
+/* ==============================================
+   Performs Add / Edit / Delete based on modalMode
+================================================ */
+function saveModalAction() {
+
+    let dropdown = document.getElementById("channel_name");
+
+    if (!dropdown) return;
+
+    if (modalMode === "add") {
+
+        let name = document.getElementById("channelInput").value.trim();
+
+        if (name === "") {
+            alert("Enter Channel Name");
+            return;
+        }
+
+        let option = document.createElement("option");
+        option.text = name;
+        option.value = name;
+
+        dropdown.add(option);
+        dropdown.value = name;
+
+        saveChannels();
+    }
+
+    else if (modalMode === "edit") {
+
+        let name = document.getElementById("channelInput").value.trim();
+
+        if (name === "") {
+            alert("Enter Channel Name");
+            return;
+        }
+
+        let selected = dropdown.selectedIndex;
+
+        dropdown.options[selected].text = name;
+        dropdown.options[selected].value = name;
+
+        saveChannels();
+    }
+
+    else if (modalMode === "delete") {
+
+        dropdown.remove(dropdown.selectedIndex);
+
+        saveChannels();
+    }
+
+    document.getElementById("channelInput").value = "";
+    document.getElementById("channelModal").style.display = "none";
+}
+
+/* ========================================
+   saves channel list to localStorage
+====================================== */
+function saveChannels() {
+
+    let dropdown = document.getElementById("channel_name");
+
+    if (!dropdown) return;
+
+    let channels = [];
+
+    for (let i = 1; i < dropdown.options.length; i++) {
+        channels.push(dropdown.options[i].text);
+    }
+
+    localStorage.setItem("channels", JSON.stringify(channels));
+}
+
+/* ========================================
+   Loads channel list from localStorage
+========================================= */
+function loadChannels() {
+
+    let dropdown = document.getElementById("channel_name");
+
+    if (!dropdown) return;
+
+    let saved = localStorage.getItem("channels");
+
+    if (!saved) return;
+
+    let channels = JSON.parse(saved); //convert a string back into an array.
+
+    dropdown.length = 1; //Keep only 1 option total
+
+    channels.forEach(name => {
+
+        let option = document.createElement("option");
+        option.text = name;
+        option.value = name;
+
+        dropdown.add(option);
+    });
+}
+
+
+
+
+/*=============================================
+ AUTO LOAD SAVED CHANNELS
+ =============================================*/
+
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    loadChannels();
+});  //When the page opens, run the worker.
+
+
+//===============================================================================================
+
+
+/* =====================================
+  FOR PARAMETER PAGE BOTTOM ADD,DELETE
+========================================*/
+
+
+/*==================================
+        Open Add DUT Modal 
+====================================*/
+
+
+
+function addDut() {
+
+    dutMode = "add";
+
+    document.getElementById("dutInput").value = "";
+    document.getElementById("dutModal").style.display = "flex";
+}
+
+
+
+/*==================================
+        Open Delete DUT Modal
+====================================*/
+function deleteDut() {
+
+    let dropdown = document.getElementById("dut");
+
+    if (dropdown.selectedIndex === 0) {
+        alert("Select DUT first");
+        return;
+    }
+
+    let selectedName = dropdown.options[dropdown.selectedIndex].text;
+
+    // change modal title
+    document.getElementById("dutTitle").innerText = "Delete DUT";
+
+    // hide input
+    document.getElementById("dutInput").style.display = "none";
+
+    // show message inside input area OR reuse input as display
+    document.getElementById("dutInput").value = selectedName;
+
+
+    // store mode
+    dutMode = "delete";
+
+    // open modal
+    document.getElementById("dutModal").style.display = "flex";
+}
+
+
+
+/*======================================
+        Execute DUT Add/Delete Action
+========================================*/
+
+function saveDut() {
+
+    let dropdown = document.getElementById("dut");
+
+    if (dutMode === "add") {
+
+        let name = document.getElementById("dutInput").value.trim();
+
+        if (name === "") {
+            alert("Enter DUT Name");
+            return;
+        }
+
+        let option = document.createElement("option");
+        option.text = name;
+        option.value = name;
+
+        dropdown.add(option);
+        dropdown.value = name;
+
+        saveDutList();
+    }
+
+    else if (dutMode === "delete") {
+
+        dropdown.remove(dropdown.selectedIndex);
+
+        saveDutList();
+    }
+
+    closeDutModal();
+}
+
+/*====================================
+        Close DUT Modal
+======================================*/
+function closeDutModal() {
+    document.getElementById("dutModal").style.display = "none";
+}
+
+
+/*=====================================
+        save DUT List to LocalStorage
+=======================================*/
+function saveDutList() {
+
+    let dropdown = document.getElementById("dut");
+
+    let list = [];
+
+    for (let i = 1; i < dropdown.options.length; i++) {
+        list.push(dropdown.options[i].text);
+    }
+
+    localStorage.setItem("dutList", JSON.stringify(list));
+}
+
+
+/*==============================================
+        Load DUT List from LocalStorage
+============================================*/
+
+function loadDutList() {
+
+    let dropdown = document.getElementById("dut");
+
+    let saved = localStorage.getItem("dutList");
+
+    if (!saved) return;
+
+    let list = JSON.parse(saved);
+
+    dropdown.length = 1;
+
+    list.forEach(name => {
+
+        let option = document.createElement("option");
+        option.text = name;
+        option.value = name;
+
+        dropdown.add(option);
+    });
+}
+
+
+/*====================================================
+      Auto Load Saved DUTs and Channels on Page Load
+======================================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadChannels();
+    loadDutList();
+});
+
+
+
+
+
+
+/*====================================================
+      Overall save in parameter
+======================================================*/
+
+function saveChannelSettings() {
+
+    let channel = document.getElementById("channel_name").value;
+
+    if (!channel || channel === "Select Channel") {
+        alert("Please Select Channel");
+        return;
+    }
+
+    let settings = {
+
+        // DUT Section
+        dut: document.getElementById("dut").value,
+        bitSec: document.getElementById("bitSec").value,
+        dbcFileName: document.getElementById("dbcFileName").value,
+
+        // Endurance Section
+        obcVoltage: document.getElementById("obcVoltage").value,
+        obcCurrent: document.getElementById("obcCurrent").value,
+        hpdcChargeCurrent: document.getElementById("hpdcChargeCurrent").value,
+        hpdcDischargeCurrent: document.getElementById("hpdcDischargeCurrent").value,
+
+        // Cycle Time
+        chargeTime: document.getElementById("chargeTime").value,
+        restTime1: document.getElementById("restTime1").value,
+        dischargeTime: document.getElementById("dischargeTime").value,
+        restTime2: document.getElementById("restTime2").value,
+
+        // OBC Line Regulation
+        obcLineHvVoltage1: document.getElementById("obcLineHvVoltage1").value,
+        obcLineHvCurrent1: document.getElementById("obcLineHvCurrent1").value,
+        obcLineHvVoltage2: document.getElementById("obcLineHvVoltage2").value,
+        obcLineHvCurrent2: document.getElementById("obcLineHvCurrent2").value,
+        obcLineHvVoltage3: document.getElementById("obcLineHvVoltage3").value,
+        obcLineHvCurrent3: document.getElementById("obcLineHvCurrent3").value,
+
+        obcSetInputVoltage1: document.getElementById("obcSetInputVoltage1").value,
+        obcSetInputVoltage2: document.getElementById("obcSetInputVoltage2").value,
+        obcSetInputVoltage3: document.getElementById("obcSetInputVoltage3").value,
+
+        // HPDCDC Line Regulation
+        hpdcSetCurrent1: document.getElementById("hpdcSetCurrent1").value,
+        hpdcSetCurrent2: document.getElementById("hpdcSetCurrent2").value,
+        hpdcSetCurrent3: document.getElementById("hpdcSetCurrent3").value,
+
+        hpdcSetHvVoltage1: document.getElementById("hpdcSetHvVoltage1").value,
+        hpdcSetHvVoltage2: document.getElementById("hpdcSetHvVoltage2").value,
+        hpdcSetHvVoltage3: document.getElementById("hpdcSetHvVoltage3").value,
+
+        // OBC Load Regulation
+        obcLoadHvVoltage1: document.getElementById("obcLoadHvVoltage1").value,
+        obcLoadCurrent1: document.getElementById("obcLoadCurrent1").value,
+        obcLoadHvVoltage2: document.getElementById("obcLoadHvVoltage2").value,
+        obcLoadCurrent2: document.getElementById("obcLoadCurrent2").value,
+        obcLoadHvVoltage3: document.getElementById("obcLoadHvVoltage3").value,
+        obcLoadCurrent3: document.getElementById("obcLoadCurrent3").value,
+
+        obcHvLoadPercent1: document.getElementById("obcHvLoadPercent1").value,
+        obcHvLoadPercent2: document.getElementById("obcHvLoadPercent2").value,
+        obcHvLoadPercent3: document.getElementById("obcHvLoadPercent3").value,
+
+        // HPDCDC Load Regulation
+        hpdcLoadHvVoltage1: document.getElementById("hpdcLoadHvVoltage1").value,
+        hpdcLoadHvVoltage2: document.getElementById("hpdcLoadHvVoltage2").value,
+        hpdcLoadHvVoltage3: document.getElementById("hpdcLoadHvVoltage3").value,
+
+        hpdcHvLoadPercent1: document.getElementById("hpdcHvLoadPercent1").value,
+        hpdcLoadCurrent1: document.getElementById("hpdcLoadCurrent1").value,
+
+        hpdcHvLoadPercent2: document.getElementById("hpdcHvLoadPercent2").value,
+        hpdcLoadCurrent2: document.getElementById("hpdcLoadCurrent2").value,
+
+        hpdcHvLoadPercent3: document.getElementById("hpdcHvLoadPercent3").value,
+        hpdcLoadCurrent3: document.getElementById("hpdcLoadCurrent3").value
+    };
+
+    localStorage.setItem(
+        "settings_" + channel,
+        JSON.stringify(settings)
+    );
+
+    alert("Settings Saved Successfully");
+}
+
+
+
+/*====================================================
+    Auto Load Saved Values
+======================================================*/
+
+
+function loadChannelSettings() {
+
+    let channel = document.getElementById("channel_name").value;
+
+    let saved = localStorage.getItem("settings_" + channel);
+
+    if (!saved) return;
+
+    let settings = JSON.parse(saved);
+
+    Object.keys(settings).forEach(function(key) {
+
+        let element = document.getElementById(key);
+
+        if (element) {
+            element.value = settings[key];
+        }
+
+    });
+}
+
+
+

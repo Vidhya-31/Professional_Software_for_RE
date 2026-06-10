@@ -173,7 +173,7 @@ color:#fff;
     font-weight:700;
     
      margin-top:-10px;
-     margin-bottom:15px;
+     margin-bottom:25px;
     color:#0f172a;
 }
 
@@ -183,33 +183,15 @@ color:#fff;
 
 .settings-card,
 .table-card,
-.report-card,
-.status-box,
-.production-container,
-.bypass-card,
-.sysinfo-card{
+.report-card{
     background:#fff;
     border-radius:18px;
     padding:24px;
     box-shadow:0 4px 20px rgba(0,0,0,.06);
 }
 
-/* =========================================================
-   SETTINGS PAGE
-========================================================= */
 
-.settings-layout{
-    display:flex;
-    flex-direction:column;
-    gap:24px;
-}
-
-.settings-card{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:22px;
-}
-/*=======================================================
+/* /*=======================================================
 Tabel  
 ==========================================================*/
 .table-card{
@@ -273,17 +255,17 @@ select{
     transition:.3s;
 }
 
-input:focus,
+/* input:focus,
 select:focus{
     border-color:#2563eb;
     background:#fff;
     box-shadow:0 0 0 4px rgba(37,99,235,.12);
-}
+} */
 
 /* =========================================================
    INPUT WITH UNIT
 ========================================================= */
-
+/* 
 .input-with-unit{
     position:relative;
 }
@@ -296,7 +278,7 @@ select:focus{
     color:#64748b;
     font-size:13px;
     font-weight:600;
-}
+} */
 
 /* =========================================
    TABLE CARD
@@ -353,32 +335,7 @@ tbody tr:hover{
     background:#f8fbff;
 }
 
-/* =========================================
-   MODE TAG
-========================================= */
-/* 
-.mode{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:110px;
-    padding:10px 18px;
-    border-radius:40px;
-    font-size:14px;
-    font-weight:700;
-} */
 
-/* Charging */
-.charging{
-    /* background:#dcfce7; */
-    color:#15803d;
-}
-
-/* Discharging */
-.discharging{
-    /* background:#fee2e2; */
-    color:#dc2626;
-}
 
 /* =========================================
    INPUT SECTION
@@ -400,60 +357,6 @@ tbody tr:hover{
     min-width:220px;
 }
 
-/* =========================================
-   INPUT
-========================================= */
-
-.input-box input{
-    width:100%;
-    height:52px;
-    border:1px solid #dbe2ea; 
-    /* border-radius:14px; */
-    background:#f8fafc;
-    padding:0 55px 0 16px;
-    font-size:15px;
-    transition:0.3s;
-    outline:none;
-}
-
-/* Focus */
-
-.input-box input:focus{
-    border-color:#2563eb;
-    background:#fff;
-    box-shadow:0 0 0 4px rgba(37,99,235,0.12);
-}
-
-/* =========================================
-   UNIT
-========================================= */
-
-.input-box .unit{
-    position:absolute;
-    top:50%;
-    right:16px;
-    transform:translateY(-50%);
-    font-size:14px;
-    font-weight:700;
-    color:#64748b;
-}
-
-/* =========================================
-   SAVE BUTTON
-========================================= */
-
-.save-btn{
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
-    color:#fff;
-    border:none;
-    padding:14px 28px;
-    border-radius:14px;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 4px 10px rgba(37,99,235,0.25);
-}
 
 
 /* =========================================================
@@ -513,9 +416,6 @@ tbody tr:hover{
     font-size:14px;
 }
 
-/* =========================================================
-   PRODUCTION
-========================================================= */
 
 
 
@@ -523,7 +423,7 @@ tbody tr:hover{
    REPORT
 ========================================================= */
 
-.report-content{
+/* .report-content{
     display:grid;
     grid-template-columns:1fr 1.5fr;
     gap:24px;
@@ -554,7 +454,7 @@ tbody tr:hover{
     justify-content:center;
     align-items:center;
     background:#f8fafc;
-}
+} */
 
 /* =========================================================
    MODAL
@@ -1023,6 +923,7 @@ th { background: #007bff; color: white; }
     min-height: 100vh;
      padding-bottom: 170px; /* table height + margin */
     box-sizing: border-box;
+
     
 }
 .live-tabs {
@@ -1352,133 +1253,673 @@ th { background: #007bff; color: white; }
 
 
 /* ===============================
-   TEST SETTINGS 
+   TEST SETTINGS
 ================================= */
-#testsettings .page-title {
-    text-align: center;
-    width: 100%;
-}
-#testsettings .dut-section label{
-    margin-bottom: 10px; 
-    font-weight: 600;
-    color: #334155;
-}
 
-#testsettings .dut-section select{
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    color: #334155;
-    cursor: pointer;
+/* PAGE TITLE */
+#testsettings .page-title{
+    text-align:center;
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#0f172a;
 }
 
-#testsettings .dut-section select:focus{
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-}
-
-
+/* TWO CHANNELS */
 #testsettings .settings-card{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-    align-items: start;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    padding:10px;
 }
 
-/* EACH CHANNEL BOX */
-
+/* CHANNEL BOX */
 #testsettings .channel-box{
-
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:12px;
+    background:#fff;
 }
+ 
 
-/* CHANNEL TITLE*/
-
+/* CHANNEL HEADING */
 #testsettings .channel-box h3{
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 10px;
+    text-align:center;
+    font-size:20px;
+    font-weight:700;
+    color:#0f172a;
+    margin-bottom:10px;
 }
 
-/*  LABELS (CHECKBOX ROWS) */
+/* NORMAL LABELS */
+#testsettings label{
+    font-size:14px;
+    font-weight:500;
+    color:#334155;
+}
 
+/* SECTION LABELS */
+#testsettings .section-title{
+    font-size:15px;
+    font-weight:700;
+    color:#0f172a;
+    margin-top:8px;
+    margin-bottom:4px;
+}
+
+/* CHECKBOX ROWS */
 #testsettings .channel-box label{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: #334155;
-    cursor: pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:4px 0;
 }
 
-/* checkbox size */
+/* CHECKBOX */
 #testsettings input[type="checkbox"]{
-    width: 16px;
-    height: 16px;
+    width:16px;
+    height:16px;
+}
+
+/* DROPDOWN LABEL */
+#testsettings .dut-section label{
+    font-weight:600;
+}
+
+/* INPUTS */
+#testsettings select,
+#testsettings input[type="text"],
+#testsettings input[type="number"]{
+    width:100%;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+    font-size:14px;
+    font-weight:400;
+}
+
+/* FOCUS */
+#testsettings input:focus,
+#testsettings select:focus{
+    outline:none;
+    border-color:#2563eb;
 }
 
 /* DIVIDER */
-
-#testsettings .channel-box hr{
-    height: 1px;
-    background: #e5e7eb;
-    margin: 8px 0;
+#testsettings hr{
+    margin:10px 0;
+    border:none;
+    border-top:1px solid #ddd;
 }
 
-/* CYCLES INPUT*/
-
-#testsettings .cycles{
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 14px;
-}
-#testsettings .time{
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 14px;
-}
-#testsettings .cycles:focus{
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-}
-
-#testsettings .time:focus{
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-}
-
-
-/* START BUTTON*/
-
+/* START BUTTON */
 #testsettings .startBtn{
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(135deg,#2563eb,#1d4ed8);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    background:#2563eb;
+    color:white;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:8px;
 }
 
 #testsettings .startBtn:hover{
-    box-shadow: 0 6px 15px rgba(37,99,235,0.3);
+    background:#1d4ed8;
 }
 
 
+
+
+
+/* ==========================
+   PARAMETER SETTINGS
+========================== */
+#paramsettings {
+    height: 100%;
+    overflow-y: auto;
+}
+.settings-card{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+   
+  
+}
+
+.settings-card h3{
+    font-size:22px;
+    font-weight:700;
+    color:#0f172a;
+    margin:0 0 15px;
+    padding-bottom:10px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+/* ==========================
+   CHANNEL SETTINGS
+========================== */
+
+.channel-row{
+    display:grid;
+    grid-template-columns:minmax(200px,1fr) auto;
+    gap:15px;
+    align-items:end;
+}
+
+.channel-row .form-group{
+    margin:0;
+}
+
+.button-group{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.button-group button{
+    height:42px;
+    min-width:90px;
+    border:none;
+    border-radius:6px;
+    background:#2563eb;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ==========================
+   DUT SETTINGS
+========================== */
+
+.dut-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 2fr;
+    gap:15px;
+    align-items:end;
+}
+
+.dut-row .form-group{
+    margin:0;
+}
+
+/* ==========================
+   FORM CONTROLS
+========================== */
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-size:14px;
+    font-weight:600;
+    color:#334155;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:42px;
+    padding:0 12px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+/* ==========================
+   INPUT WITH UNIT
+========================== */
+
+.input-with-unit{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    width:100%;
+}
+
+.input-with-unit input{
+    flex:1;
+    min-width:0;
+}
+
+.unit{
+    min-width:50px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    background:#f8fafc;
+    font-weight:600;
+    color:#475569;
+}
+
+/* ==========================
+   FILE BUTTONS
+========================== */
+
+.input-with-unit button{
+    height:42px;
+    padding:0 14px;
+    border:none;
+    border-radius:6px;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.input-with-unit button:first-of-type{
+    background:#2563eb;
+}
+
+.input-with-unit button:last-of-type{
+    background:#ef4444;
+}
+
+/* ==========================
+   ENDURANCE HEADING
+========================== */
+
+.endurance-header{
+    margin:20px 0 15px;
+}
+
+.endurance-header h3{
+    font-size:28px;
+    font-weight:700;
+    color:#0f172a;
+    margin:0;
+    padding-bottom:10px;
+    border-bottom:1px solid #e5e7eb;
+    display:inline-block;
+}
+
+/* ==========================
+   PARAMETER BOXES
+========================== */
+
+.test-row{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+}
+
+.test-box{
+    flex:1;
+    background:#fff;
+    border:1px solid #dbe2ea;
+    border-radius:12px;
+    padding:15px;
+}
+
+.test-box h3{
+    margin:0 0 15px;
+    font-size:18px;
+    font-weight:700;
+    border:none;
+    padding:0;
+}
+
+.test-box .form-group{
+    margin-bottom:12px;
+}
+
+/* ==========================
+   BOTTOM BUTTONS
+========================== */
+
+.btn-area{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:15px;
+}
+
+.btn-area button{
+    height:42px;
+    padding:0 20px;
+    border:none;
+    border-radius:6px;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.secondary-btn{
+    background:#10b981;
+}
+
+.danger-btn{
+    background:#ef4444;
+}
+
+.primary-btn{
+    background:#2563eb;
+}
+
+
+/* ==========================
+   GROUP HEADING
+========================== */
+
+.group-heading{
+    font-size:18px;
+    font-weight:600;
+    color:#1e293b;
+    margin:20px 0 10px;
+}
+
+/* ==========================
+   HEADING ROW
+========================== */
+
+.heading-row{
+    display:flex;
+    gap:15px;
+    margin:20px 0 10px;
+}
+
+.group-title{
+    flex:2;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+    color:#1e293b;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ==========================
+   MAIN 4 BOX ROW LAYOUT
+========================== */
+
+.Title-row{
+    margin-top: 5px;
+    font-weight: 90px;
+
+}
+.settings-row{
+    display:flex;
+    gap:15px;
+    flex-wrap:nowrap;
+}
+
+/* BOX */
+
+.settings-box{
+    flex:1;
+    min-width:250px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.hv-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.hv-table th{
+    background:#4f6cf7;
+    color:#fff;
+    padding:10px;
+    border:1px solid #d1d5db;
+    font-size:14px;
+    text-align:center;
+}
+
+.hv-table td{
+    border:1px solid #d1d5db;
+    text-align:center;
+    height:40px;
+    padding:0;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+
+.hv-table input{
+    width:100%;
+    height:100%;
+    border:none;
+    outline:none;
+    text-align:center;
+    background:transparent;
+    padding:8px;
+    box-sizing:border-box;
+}
+
+.hv-table input:focus{
+    background:#f8fafc;
+}
+
+
+/* ==========================
+   ALARM SETTINGS
+========================== */
+
+.alarm-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.alarm-table th,
+.alarm-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.alarm-table input[type="number"],
+.alarm-table select {
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.alarm-table input[type="number"]:focus,
+.alarm-table select:focus {
+    outline: none;
+    border: 1px solid #007bff; /* keep same border width */
+}
+.alarm-table input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    transform: scale(0.9);
+    margin: 0;
+    cursor: pointer;
+}
+.alarm-table td:first-child {
+    width: 80px;
+}
+
+.alarm-table td:nth-child(2) {
+    text-align: left;
+}
+/* ==========================
+   POPUP SETTINGS
+========================== */
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-box{
+    width:400px;
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.modal-box h3{
+    margin:0 0 15px;
+    color:#1e293b;
+    font-size:20px;
+}
+
+.modal-box input{
+    width:100%;
+    height:45px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    padding:0 12px;
+    font-size:14px;
+    box-sizing:border-box;
+    outline:none;
+}
+
+.modal-box input:focus{
+    border-color:#2563eb;
+}
+
+#deleteText{
+    margin:15px 0;
+    font-size:15px;
+    color:#374151;
+}
+
+.modal-buttons{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+}
+
+.modal-buttons button{
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.modal-buttons button:first-child{
+    background:#2563eb;
+    color:#fff;
+}
+
+.modal-buttons button:last-child{
+    background:#e5e7eb;
+    color:#111827;
+}
+
+/* =========================
+   CHANNEL BUTTONS
+========================= */
+
+.button-group{
+    display:flex;
+    gap:10px;
+    align-items:end;
+}
+
+.button-group button{
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:500;
+}
+
+.button-group button:nth-child(1){
+    background:#16a34a;
+}
+
+.button-group button:nth-child(2){
+    background:#2563eb;
+}
+
+.button-group button:nth-child(3){
+    background:#dc2626;
+}
+
+
+
+/* =========================
+   DUT SECTION (NEW ONLY)
+========================= */
+
+/* DUT Dropdown */
+#dut {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#dut:focus {
+    border-color: #2563eb;
+}
+
+/* DUT Button Layout (separate from channel buttons) */
+.dut-button-group {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    margin-top: 10px;
+}
+
+/* DUT Modal Input spacing (uses your existing modal styles) */
+#dutInput {
+    margin-top: 10px;
+}
+
+
+/* =========================
+   WARNING POP UP
+========================= */ 
+
+.error-field {
+    border: 2px solid red !important;
+    background-color: #ffe6e6 !important;
+    scroll-margin-top: 100px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+}
 /* =========================
    Upload Section
 ========================= */
